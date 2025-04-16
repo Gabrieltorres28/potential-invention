@@ -1,9 +1,8 @@
-"use client"
-
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useEffect } from "react"
 
 interface AuthorityProps {
   name: string
@@ -35,7 +34,7 @@ const authorities: AuthorityProps[] = [
     imageUrl: "/placeholder.svg?height=400&width=400",
   },
   {
-    name: "Carlos Ramírez",
+    name: "Fabián Breu",
     position: "Secretario Académico",
     description:
       "Técnico Químico con formación complementaria en gestión educativa. Como personal administrativo altamente calificado, coordina eficientemente los procesos académicos y administrativos del instituto. Su meticulosa organización y conocimiento de los procedimientos institucionales garantizan el correcto funcionamiento de las actividades académicas, desde la inscripción hasta la titulación. Su dedicación al servicio de estudiantes y docentes ha sido fundamental para mantener los altos estándares de calidad educativa que caracterizan a nuestra institución.",
@@ -78,6 +77,11 @@ export function AuthoritiesSection({ onClose }: AuthoritiesSectionProps) {
       },
     },
   }
+
+  // Esto asegura que el scroll se resetea al inicio cuando se entra o se sale de la página
+  useEffect(() => {
+    window.scrollTo(0, 0)  // Resetea el scroll al inicio de la página cuando se carga
+  }, [])
 
   return (
     <motion.div
