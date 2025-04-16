@@ -22,10 +22,15 @@ type NavItem = {
     href: string
     sectionId?: string
     description?: string
+    action?: () => void
   }[]
 }
 
-export function Header() {
+interface HeaderProps {
+  onShowAuthorities?: () => void
+}
+
+export function Header({ onShowAuthorities }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -57,7 +62,14 @@ export function Header() {
     }, 150)
   }
 
-  const handleNavClick = (e: React.MouseEvent, sectionId?: string) => {
+  const handleNavClick = (e: React.MouseEvent, sectionId?: string, action?: () => void) => {
+    if (action) {
+      e.preventDefault()
+      action()
+      setActiveDropdown(null)
+      return
+    }
+
     if (sectionId) {
       e.preventDefault()
       scrollToSection(sectionId)
@@ -105,6 +117,62 @@ export function Header() {
       },
     }),
   }
+
+  // Crear navItems con la opción de autoridades
+  const navItems: NavItem[] = [
+    { label: "Inicio", href: "/#inicio", sectionId: "inicio" },
+    {
+      label: "Carreras",
+      href: "/#carreras",
+      sectionId: "carreras",
+      children: [
+        {
+          label: "Tec. Análisis de Sistemas",
+          href: "/#sistemas",
+          sectionId: "sistemas",
+          description: "Desarrollo de software y sistemas de información",
+        },
+        {
+          label: "Tec. Redes",
+          href: "/#redes",
+          sectionId: "redes",
+          description: "Infraestructura y comunicaciones",
+        },
+        {
+          label: "Tec. Seguridad e Higiene",
+          href: "/#seguridad",
+          sectionId: "seguridad",
+          description: "Prevención de riesgos laborales",
+        },
+      ],
+    },
+    {
+      label: "Inscripciones",
+      href: "/#inscripciones",
+      sectionId: "inscripciones",
+      children: [
+        { label: "Requisitos", href: "/#requisitos", sectionId: "requisitos" },
+        { label: "Fechas importantes", href: "/#fechas", sectionId: "fechas" },
+        { label: "Aranceles", href: "/#aranceles", sectionId: "aranceles" },
+        { label: "Becas", href: "/#becas", sectionId: "becas" },
+      ],
+    },
+    {
+      label: "Institucional",
+      href: "/#institucional",
+      sectionId: "institucional",
+      children: [
+        { label: "Historia", href: "/#historia", sectionId: "historia" },
+        { label: "Misión y Visión", href: "/#mision", sectionId: "mision" },
+        {
+          label: "Autoridades",
+          href: "/#autoridades",
+          action: onShowAuthorities,
+        },
+        { label: "Infraestructura", href: "/#infraestructura", sectionId: "infraestructura" },
+      ],
+    },
+  ]
 
   return (
     <motion.header
@@ -193,7 +261,7 @@ export function Header() {
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            onClick={(e) => handleNavClick(e, child.sectionId)}
+                            onClick={(e) => handleNavClick(e, child.sectionId, child.action)}
                             className="block rounded-md px-3 py-2 text-sm text-zinc-800 transition-colors hover:bg-zinc-100 hover:text-primary dark:text-white dark:hover:bg-zinc-700 dark:hover:text-primary cursor-pointer"
                             variants={dropdownItemVariants}
                             custom={childIndex}
@@ -257,7 +325,7 @@ export function Header() {
                           <a
                             key={child.label}
                             href={child.href}
-                            onClick={(e) => handleNavClick(e, child.sectionId)}
+                            onClick={(e) => handleNavClick(e, child.sectionId, child.action)}
                             className="block text-sm text-zinc-600 transition-colors hover:text-primary dark:text-zinc-300 dark:hover:text-primary cursor-pointer"
                           >
                             {child.label}
@@ -281,54 +349,3 @@ export function Header() {
     </motion.header>
   )
 }
-
-const navItems: NavItem[] = [
-  { label: "Inicio", href: "/#inicio", sectionId: "inicio" },
-  {
-    label: "Carreras",
-    href: "/#carreras",
-    sectionId: "carreras",
-    children: [
-      {
-        label: "Tec. Análisis de Sistemas",
-        href: "/#sistemas",
-        sectionId: "sistemas",
-        description: "Desarrollo de software y sistemas de información",
-      },
-      {
-        label: "Tec. Redes",
-        href: "/#redes",
-        sectionId: "redes",
-        description: "Infraestructura y comunicaciones",
-      },
-      {
-        label: "Tec. Seguridad e Higiene",
-        href: "/#seguridad",
-        sectionId: "seguridad",
-        description: "Prevención de riesgos laborales",
-      },
-    ],
-  },
-  {
-    label: "Inscripciones",
-    href: "/#inscripciones",
-    sectionId: "inscripciones",
-    children: [
-      { label: "Requisitos", href: "/#requisitos", sectionId: "requisitos" },
-      { label: "Fechas importantes", href: "/#fechas", sectionId: "fechas" },
-      { label: "Aranceles", href: "/#aranceles", sectionId: "aranceles" },
-      { label: "Becas", href: "/#becas", sectionId: "becas" },
-    ],
-  },
-  {
-    label: "Institucional",
-    href: "/#institucional",
-    sectionId: "institucional",
-    children: [
-      { label: "Historia", href: "/#historia", sectionId: "historia" },
-      { label: "Misión y Visión", href: "/#mision", sectionId: "mision" },
-      { label: "Autoridades", href: "/#autoridades", sectionId: "autoridades" },
-      { label: "Infraestructura", href: "/#infraestructura", sectionId: "infraestructura" },
-    ],
-  },
-]
