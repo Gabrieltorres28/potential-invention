@@ -1,7 +1,19 @@
+"use client"
+
+import type React from "react"
+
 import Link from "next/link"
 import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll"
 
 export function Footer() {
+  const { scrollToSection } = useSmoothScroll()
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault()
+    scrollToSection(sectionId)
+  }
+
   return (
     <footer className="bg-white text-zinc-800 border-t border-zinc-200 dark:bg-zinc-950 dark:text-white dark:border-zinc-800">
       <div className="container px-4 py-12 md:px-6">
@@ -35,41 +47,49 @@ export function Footer() {
             <h3 className="mb-4 font-playfair text-xl font-bold">Enlaces rápidos</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
+                <a
+                  href="/#inicio"
+                  onClick={(e) => handleLinkClick(e, "inicio")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
+                >
                   Inicio
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="#carreras"
-                  className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+                <a
+                  href="/#carreras"
+                  onClick={(e) => handleLinkClick(e, "carreras")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
                 >
                   Carreras
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="#inscripciones"
-                  className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+                <a
+                  href="/#inscripciones"
+                  onClick={(e) => handleLinkClick(e, "inscripciones")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
                 >
                   Inscripciones
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="#institucional"
-                  className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+                <a
+                  href="/#institucional"
+                  onClick={(e) => handleLinkClick(e, "institucional")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
                 >
                   Institucional
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  href="#contacto"
-                  className="text-muted-foreground transition-colors hover:text-primary hover:underline"
+                <a
+                  href="/#contacto"
+                  onClick={(e) => handleLinkClick(e, "contacto")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
                 >
                   Contacto
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -78,19 +98,31 @@ export function Footer() {
             <h3 className="mb-4 font-playfair text-xl font-bold">Carreras</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
-                  Tec. Analista de Sistemas
-                </Link>
+                <a
+                  href="/#sistemas"
+                  onClick={(e) => handleLinkClick(e, "sistemas")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
+                >
+                  Tec. Análisis de Sistemas
+                </a>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
+                <a
+                  href="/#redes"
+                  onClick={(e) => handleLinkClick(e, "redes")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
+                >
                   Tec. Redes
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground transition-colors hover:text-primary hover:underline">
+                <a
+                  href="/#seguridad"
+                  onClick={(e) => handleLinkClick(e, "seguridad")}
+                  className="text-muted-foreground transition-colors hover:text-primary hover:underline cursor-pointer"
+                >
                   Tec. Seguridad e Higiene Laboral
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

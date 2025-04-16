@@ -6,17 +6,28 @@ export function MapSection() {
   return (
     <section className="bg-white py-24 dark:bg-zinc-900">
       <div className="container px-4 md:px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-playfair text-3xl font-bold tracking-tight md:text-4xl">Ubicación</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Visitanos en nuestra sede central</p>
-        </div>
-
         <motion.div
+          className="mx-auto max-w-2xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
+        >
+          <h2 className="font-playfair text-3xl font-bold tracking-tight md:text-4xl">Ubicación</h2>
+          <p className="mt-4 text-lg text-muted-foreground">Visitanos en nuestra sede central</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
           className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-lg border border-primary shadow-xl"
+          whileHover={{
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+            y: -5,
+            transition: { duration: 0.3 },
+          }}
         >
           <div className="relative aspect-video w-full overflow-hidden bg-gray-200">
             <iframe
@@ -30,24 +41,45 @@ export function MapSection() {
               className="absolute inset-0 h-full w-full"
             ></iframe>
           </div>
-          <div className="bg-white p-6 dark:bg-zinc-800">
+          <motion.div
+            className="bg-white p-6 dark:bg-zinc-800"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
             <h3 className="font-playfair text-xl font-semibold">Instituto Superior ISIPP 1206</h3>
             <p className="mt-2 text-muted-foreground">Av. Ejemplo 1234, Ciudad Autónoma de Buenos Aires</p>
             <div className="mt-4 flex flex-wrap gap-4">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
                 <p className="font-medium text-primary">Teléfono</p>
                 <p className="text-muted-foreground">+54 11 4567-8900</p>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+                viewport={{ once: true }}
+              >
                 <p className="font-medium text-primary">Email</p>
                 <p className="text-muted-foreground">info@isipp1206.edu.ar</p>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
                 <p className="font-medium text-primary">Horario</p>
                 <p className="text-muted-foreground">Lunes a Viernes: 8:00 - 21:00</p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
