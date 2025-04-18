@@ -2,12 +2,14 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "vercel-build": "npm install --legacy-peer-deps && next build"
+}
+,
   "dependencies": {
     "@emailjs/browser": "latest",
     "@emotion/is-prop-valid": "latest",

@@ -3,6 +3,9 @@
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
+import '../styles/globals.css'
+
+
 
 import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/contact-form"
