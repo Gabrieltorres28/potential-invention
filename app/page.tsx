@@ -3,9 +3,6 @@
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
-import '../styles/globals.css'
-
-
 
 import { Button } from "@/components/ui/button"
 import { ContactForm } from "@/components/contact-form"
@@ -278,7 +275,7 @@ export default function Home() {
                       className="mt-6 bg-primary text-white hover:bg-primary/90 hover-vibrate"
                       onClick={() => scrollToSection("contacto")}
                     >
-                      Contáctanos
+                      Contacto
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -314,7 +311,7 @@ export default function Home() {
                 className="font-playfair text-3xl font-bold tracking-tight md:text-4xl text-center mb-12 text-primary"
                 variants={itemVariants}
               >
-                Tecnicatura en Redes Informáticas
+                Tecnicatura en Redes
               </motion.h2>
 
               <motion.div className="grid gap-8 md:grid-cols-2 items-center" variants={containerVariants}>
@@ -361,7 +358,7 @@ export default function Home() {
                       className="mt-6 bg-primary text-white hover:bg-primary/90 hover-vibrate"
                       onClick={() => scrollToSection("contacto")}
                     >
-                      Contáctanos
+                      Contact us
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -417,7 +414,7 @@ export default function Home() {
                       className="mt-6 bg-primary text-white hover:bg-primary/90 hover-vibrate"
                       onClick={() => scrollToSection("contacto")}
                     >
-                      Contáctanos
+                      Contacto
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -586,7 +583,7 @@ export default function Home() {
                     className="bg-white text-primary hover:bg-white/90 glow-border"
                     onClick={() => scrollToSection("contacto")}
                   >
-                   Contáctanos
+                    Contacto
                   </Button>
                 </motion.div>
               </motion.div>
