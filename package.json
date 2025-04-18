@@ -2,14 +2,13 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
- "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint",
-  "vercel-build": "npm install --legacy-peer-deps && next build"
-}
-,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "vercel-build": "npm install --legacy-peer-deps && next build"
+  },
   "dependencies": {
     "@emailjs/browser": "latest",
     "@emotion/is-prop-valid": "latest",
@@ -47,7 +46,7 @@
     "cmdk": "1.0.4",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "8.5.1",
-    "framer-motion": "latest",
+    "framer-motion": "^12.7.4",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next": "13.4",
@@ -66,8 +65,8 @@
   },
   "devDependencies": {
     "@types/node": "^22",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
