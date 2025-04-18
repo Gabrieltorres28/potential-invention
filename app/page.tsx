@@ -275,7 +275,7 @@ export default function Home() {
                       className="mt-6 bg-primary text-white hover:bg-primary/90 hover-vibrate"
                       onClick={() => scrollToSection("contacto")}
                     >
-                      Contact us
+                      Contáctanos
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -285,7 +285,7 @@ export default function Home() {
                   whileHover="hover"
                 >
                   <Image
-                    src="/placeholder.svg?height=800&width=600"
+                    src="/informatica.png?height=800&width=600"
                     alt="Estudiantes de Análisis de Sistemas"
                     fill
                     className="object-cover"
@@ -311,7 +311,7 @@ export default function Home() {
                 className="font-playfair text-3xl font-bold tracking-tight md:text-4xl text-center mb-12 text-primary"
                 variants={itemVariants}
               >
-                Tecnicatura en Redes
+                Tecnicatura en Redes Informáticas
               </motion.h2>
 
               <motion.div className="grid gap-8 md:grid-cols-2 items-center" variants={containerVariants}>
@@ -321,7 +321,7 @@ export default function Home() {
                   whileHover="hover"
                 >
                   <Image
-                    src="/placeholder.svg?height=800&width=600"
+                    src="/pararede.webp?height=800&width=600"
                     alt="Estudiantes de Redes"
                     fill
                     className="object-cover"
@@ -358,7 +358,7 @@ export default function Home() {
                       className="mt-6 bg-primary text-white hover:bg-primary/90 hover-vibrate"
                       onClick={() => scrollToSection("contacto")}
                     >
-                      Contact us
+                      Contáctanos
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -414,7 +414,7 @@ export default function Home() {
                       className="mt-6 bg-primary text-white hover:bg-primary/90 hover-vibrate"
                       onClick={() => scrollToSection("contacto")}
                     >
-                      Contact us
+                      Contáctanos
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -424,7 +424,7 @@ export default function Home() {
                   whileHover="hover"
                 >
                   <Image
-                    src="/placeholder.svg?height=800&width=600"
+                    src="/tecseg.png?height=800&width=600"
                     alt="Estudiantes de Seguridad e Higiene"
                     fill
                     className="object-cover"
@@ -583,7 +583,7 @@ export default function Home() {
                     className="bg-white text-primary hover:bg-white/90 glow-border"
                     onClick={() => scrollToSection("contacto")}
                   >
-                    Contact us
+                   Contáctanos
                   </Button>
                 </motion.div>
               </motion.div>
