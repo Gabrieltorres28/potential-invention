@@ -26,11 +26,9 @@ type NavItem = {
   }[]
 }
 
-interface HeaderProps {
-  onShowAuthorities?: () => void
-}
+type HeaderProps = {}
 
-export function Header({ onShowAuthorities }: HeaderProps) {
+export function Header({}: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -127,7 +125,7 @@ export function Header({ onShowAuthorities }: HeaderProps) {
       sectionId: "carreras",
       children: [
         {
-          label: "Tec. Análisis de Sistemas",
+          label: "Analista de Sistemas de Computación",
           href: "/#sistemas",
           sectionId: "sistemas",
           description: "Desarrollo de software y sistemas de información",
@@ -147,30 +145,10 @@ export function Header({ onShowAuthorities }: HeaderProps) {
       ],
     },
     {
-      label: "Inscripciones",
-      href: "/#inscripciones",
-      sectionId: "inscripciones",
-      children: [
-        { label: "Requisitos", href: "/#requisitos", sectionId: "requisitos" },
-        { label: "Fechas importantes", href: "/#fechas", sectionId: "fechas" },
-        { label: "Aranceles", href: "/#aranceles", sectionId: "aranceles" },
-        { label: "Becas", href: "/#becas", sectionId: "becas" },
-      ],
-    },
-    {
       label: "Institucional",
       href: "/#institucional",
       sectionId: "institucional",
-      children: [
-        { label: "Historia", href: "/#historia", sectionId: "historia" },
-        { label: "Misión y Visión", href: "/#mision", sectionId: "mision" },
-        {
-          label: "Autoridades",
-          href: "/#autoridades",
-          action: onShowAuthorities,
-        },
-        { label: "Infraestructura", href: "/#infraestructura", sectionId: "infraestructura" },
-      ],
+      children: [{ label: "Misión y Visión", href: "/#mision", sectionId: "mision" }],
     },
   ]
 

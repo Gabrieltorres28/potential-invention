@@ -49,7 +49,7 @@ export function MapSection() {
             viewport={{ once: true }}
           >
             <h3 className="font-playfair text-xl font-semibold">Instituto Superior ISIPP 1206</h3>
-            <p className="mt-2 text-muted-foreground">Av. Ejemplo 1234, Ciudad Autónoma de Buenos Aires</p>
+            <p className="mt-2 text-muted-foreground">Puerto Piray, Misiones, Argentina – Calle Sarmiento</p>
             <div className="mt-4 flex flex-wrap gap-4">
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
@@ -58,7 +58,9 @@ export function MapSection() {
                 viewport={{ once: true }}
               >
                 <p className="font-medium text-primary">Teléfono</p>
-                <p className="text-muted-foreground">+54 11 4567-8900</p>
+                <p className="text-muted-foreground">
+                  <s>+54 11 4567-8900</s> <span className="text-xs italic">(No disponible aún)</span>
+                </p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
@@ -67,7 +69,7 @@ export function MapSection() {
                 viewport={{ once: true }}
               >
                 <p className="font-medium text-primary">Email</p>
-                <p className="text-muted-foreground">info@isipp1206.edu.ar</p>
+                <p className="text-muted-foreground">isip1206@gmail.com</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
