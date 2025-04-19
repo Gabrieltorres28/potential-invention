@@ -77,11 +77,11 @@ export function Header({}: HeaderProps) {
 
   // Variantes de animación para los elementos del menú
   const menuItemVariants = {
-    initial: { opacity: 0, y: -5 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -5 },
-    transition: { duration: 0.2 },
+    initial: { opacity: 0, y: -5, transition: { duration: 0.2 } },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+    exit: { opacity: 0, y: -5, transition: { duration: 0.2 } },
   }
+  
 
   // Variantes para el dropdown
   const dropdownVariants = {
@@ -270,7 +270,7 @@ export function Header({}: HeaderProps) {
           >
             <Button
               className={`bg-primary text-white hover:bg-primary/90 ${isScrolled ? "border-primary" : "border-white"}`}
-              onClick={(e) => handleNavClick(e, "contacto")}
+              onClick={(e) => handleNavClick(e, "inscripciones")}
             >
               Contacto
             </Button>
@@ -315,7 +315,7 @@ export function Header({}: HeaderProps) {
                 ))}
                 <Button
                   className="bg-primary text-white hover:bg-primary/90"
-                  onClick={(e) => handleNavClick(e, "contacto")}
+                  onClick={(e) => handleNavClick(e, "inscripciones")}
                 >
                   Contacto
                 </Button>
