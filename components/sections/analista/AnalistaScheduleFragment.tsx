@@ -1,14 +1,14 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import ScheduleCalendar, { ScheduleEvent } from "@/components/ScheduleCalendar";
+import Image from "next/image";
 
-interface RedesScheduleFragmentProps {
+interface SistemasScheduleFragmentProps {
   className?: string;
 }
 
-export default function RedesScheduleFragment({ className }: RedesScheduleFragmentProps) {
+export default function SistemasScheduleFragment({ className }: SistemasScheduleFragmentProps) {
   const [events, setEvents] = useState<ScheduleEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,12 +16,9 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
     startHour: 8, 
     endHour: 23 
   });
-
-  // Estado para las opciones disponibles
+  const [showCustomImage, setShowCustomImage] = useState(false);
   const [availableYears, setAvailableYears] = useState<string[]>([]);
   const [availableDivisions, setAvailableDivisions] = useState<string[]>([]);
-  
-  // Estado para las selecciones
   const [selectedYear, setSelectedYear] = useState<string>("-");
   const [selectedDivision, setSelectedDivision] = useState<string>("-");
 
@@ -31,15 +28,12 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
       try {
         setLoading(true);
         
-        // Obtener lista de archivos (simulado - en producción usar API)
-        const files = await fetchAvailableFiles("redes");
+        const files = await fetchAvailableFiles("sistemas");
         
-        // Extraer años y divisiones disponibles
         const years = new Set<string>();
         const divisions = new Set<string>();
 
         files.forEach(file => {
-          // Formato esperado: redes-año-division.xlsx
           const [_, año, division] = file.replace('.xlsx', '').split('-');
           years.add(año);
           divisions.add(division);
@@ -48,7 +42,6 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
         setAvailableYears(Array.from(years).sort());
         setAvailableDivisions(Array.from(divisions).sort());
         
-        // Seleccionar primeros valores disponibles si existen
         if (years.size > 0 && divisions.size > 0) {
           setSelectedYear(Array.from(years)[0]);
           setSelectedDivision(Array.from(divisions)[0]);
@@ -79,10 +72,11 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
       const data = await res.json();
       return data.files.filter((file: string) => file.startsWith(`${carrera}-`));
     } catch {
-      // Fallback para desarrollo
       return [
-        "redes-3ero-a.xlsx",
-        // Agrega aquí otros archivos que tengas para redes
+        "sistemas-1ero-a.xlsx",
+        "sistemas-1ero-b.xlsx", 
+        "sistemas-2do-a.xlsx",
+        "sistemas-3ero-a.xlsx",
       ];
     }
   };
@@ -91,11 +85,16 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
     try {
       setLoading(true);
       setError(null);
+      setShowCustomImage(false);
+      setEvents([]);
       
-      const filename = `redes-${selectedYear.toLowerCase()}-${selectedDivision.toLowerCase()}.xlsx`;
+      const filename = `sistemas-${selectedYear.toLowerCase()}-${selectedDivision.toLowerCase()}.xlsx`;
       const resp = await fetch(`/horarios/${filename}`);
       
-      if (!resp.ok) throw new Error(`Horario no encontrado: ${filename}`);
+      if (!resp.ok) {
+        setShowCustomImage(true);
+        return;
+      }
 
       const arrayBuffer = await resp.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: "array" });
@@ -103,7 +102,10 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
       const sheet = workbook.Sheets[sheetName];
       const rows: any[][] = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false });
 
-      if (rows.length < 2) throw new Error("El archivo está vacío");
+      if (rows.length < 2) {
+        setShowCustomImage(true);
+        return;
+      }
 
       const header = rows[0] as string[];
       const parsedEvents: ScheduleEvent[] = [];
@@ -145,7 +147,7 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
             inicio,
             fin,
             aula,
-            sistema: `Redes y Comunicación ${selectedYear} ${selectedDivision}`
+            sistema: `Analista en Sistemas ${selectedYear} ${selectedDivision}`
           });
         }
       }
@@ -157,6 +159,7 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
       });
     } catch (err) {
       console.error("❌ Error:", err);
+      setShowCustomImage(true);
       setError(err instanceof Error ? err.message : "Error desconocido");
     } finally {
       setLoading(false);
@@ -168,11 +171,10 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
       <div className="bg-card rounded-xl shadow-lg p-6 glow-border">
         <div className="flex flex-col gap-4 mb-6">
           <h2 className="text-3xl font-bold text-center md:text-left text-primary font-playfair">
-            🕒 Horario de Redes y Comunicación
+            🖥️ Horario de Analista en Sistemas
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Selector de Año */}
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-muted-foreground">Año:</label>
               <select 
@@ -188,7 +190,6 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
               </select>
             </div>
             
-            {/* Selector de División */}
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-muted-foreground">División:</label>
               <select 
@@ -222,7 +223,21 @@ export default function RedesScheduleFragment({ className }: RedesScheduleFragme
           </div>
         ) : (
           <div className="border border-border rounded-lg overflow-hidden">
-            {events.length > 0 ? (
+            {showCustomImage ? (
+              <div className="flex flex-col items-center justify-center p-8">
+                <Image
+                  src="/horario-no-disponible.png"
+                  alt="Horario no disponible"
+                  width={500}
+                  height={375}
+                  className="mb-4"
+                />
+                <p className="text-lg text-muted-foreground text-center">
+                  El horario para {selectedYear}° año - División {selectedDivision.toUpperCase()} no está disponible
+                </p>
+
+              </div>
+            ) : events.length > 0 ? (
               <ScheduleCalendar 
                 events={events} 
                 startHour={timeRange.startHour}

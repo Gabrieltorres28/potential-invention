@@ -5,6 +5,8 @@ export interface ScheduleEvent {
   dia: "Lunes" | "Martes" | "Miércoles" | "Jueves" | "Viernes";
   inicio: string;
   fin: string;
+  anio: string;
+  division: string;
 }
 
 export function parseScheduleXlsx(arrayBuffer: ArrayBuffer): ScheduleEvent[] {
@@ -13,16 +15,18 @@ export function parseScheduleXlsx(arrayBuffer: ArrayBuffer): ScheduleEvent[] {
   const sheet = workbook.Sheets[sheetName];
   const rows: any[][] = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false });
 
-  const header = rows[0] as string[];
+  // Detectar año y división en la primera celda (como "Primer Año A")
+  const firstCell = (rows[0]?.[0] as string)?.trim() || "";
+  const [anio, division] = extraerAnioYDivision(firstCell);
+
+  const header = rows[1] as string[]; // ahora los días están en la segunda fila
   const parsed: ScheduleEvent[] = [];
 
-  for (let i = 1; i < rows.length; i++) {
+  for (let i = 2; i < rows.length; i++) {
     const row = rows[i];
 
-    // Ignorar filas vacías o sin horario válido
     if (!row[0] || !String(row[0]).match(/(\d{1,2}[:,]\d{2})\s*a\s*(\d{1,2}[:,]\d{2})/)) continue;
 
-    // Reemplazar coma por dos puntos, y dividir por "a"
     const [inicioRaw, finRaw] = String(row[0])
       .replace(",", ":")
       .split("a")
@@ -31,12 +35,11 @@ export function parseScheduleXlsx(arrayBuffer: ArrayBuffer): ScheduleEvent[] {
     const inicio = convertirHora(inicioRaw);
     const fin = convertirHora(finRaw);
 
-    // columnas de lunes (1) a viernes (5)
     for (let col = 1; col <= 5; col++) {
       const dia = header[col] as ScheduleEvent["dia"];
       const celda = row[col]?.toString().trim();
       if (celda) {
-        parsed.push({ materia: celda, dia, inicio, fin });
+        parsed.push({ materia: celda, dia, inicio, fin, anio, division });
       }
     }
   }
@@ -46,4 +49,12 @@ export function parseScheduleXlsx(arrayBuffer: ArrayBuffer): ScheduleEvent[] {
 
 function convertirHora(hora: string): string {
   return hora.includes(":") ? hora : hora.replace(",", ":");
+}
+
+function extraerAnioYDivision(texto: string): [string, string] {
+  // ejemplo: "Primer Año A"
+  const partes = texto.split(" ");
+  const anio = partes.slice(0, 2).join(" "); // "Primer Año"
+  const division = partes[2] || ""; // "A"
+  return [anio, division];
 }

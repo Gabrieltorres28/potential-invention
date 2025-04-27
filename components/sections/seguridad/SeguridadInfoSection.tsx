@@ -2,11 +2,11 @@
 import React from "react";
 import Image from "next/image";
 
-interface RedesInfoSectionProps {
+interface SeguridadInfoSectionProps {
   className?: string;
 }
 
-export default function RedesInfoSection({ className }: RedesInfoSectionProps) {
+export default function SeguridadInfoSection({ className }: SeguridadInfoSectionProps) {
   return (
     <section
       id="carrera"
@@ -18,16 +18,16 @@ export default function RedesInfoSection({ className }: RedesInfoSectionProps) {
           {/* Contenido principal */}
           <div className="w-full md:w-1/2 text-primary-foreground dark:text-primary-dark-foreground text-center md:text-left mx-auto max-w-2xl">
             <h2 className="text-4xl font-bold mb-6 text-primary">
-              Información sobre la Carrera
+              Técnico en Higiene y Seguridad Laboral
             </h2>
             <p className="text-lg mb-8 leading-relaxed text-muted-foreground">
-              La Tecnicatura en Redes te prepara para diseñar, implementar y
-              mantener infraestructuras de redes y sistemas de comunicación
-              empresarial.
+              La carrera te capacita para identificar, evaluar y controlar riesgos laborales, 
+              implementando medidas preventivas para garantizar entornos de trabajo seguros 
+              y saludables conforme a la legislación vigente.
             </p>
             <ul className="space-y-4 text-muted-foreground">
               <li className="flex items-center justify-center md:justify-start space-x-3">
-                <span className="text-accent dark:text-accent-foreground text-xl ">🕒</span>
+                <span className="text-accent dark:text-accent-foreground text-xl">🕒</span>
                 <span>Duración: 3 años</span>
               </li>
               <li className="flex items-center justify-center md:justify-start space-x-3">
@@ -35,8 +35,8 @@ export default function RedesInfoSection({ className }: RedesInfoSectionProps) {
                 <span>Modalidad: Presencial</span>
               </li>
               <li className="flex items-center justify-center md:justify-start space-x-3">
-                <span className="text-accent dark:text-accent-foreground text-xl">🎓</span>
-                <span>Cursillo de inicio: 2 semanas</span>
+                <span className="text-accent dark:text-accent-foreground text-xl">🔍</span>
+                <span>Enfoque: Prevención de riesgos y condiciones de trabajo</span>
               </li>
             </ul>
           </div>
@@ -45,8 +45,8 @@ export default function RedesInfoSection({ className }: RedesInfoSectionProps) {
           <div className="w-full md:w-1/2 flex justify-center">
             <div className="relative w-full aspect-square max-w-md rounded-xl overflow-hidden shadow-2xl border-4 border-white/10 bg-white/10">
               <Image
-                src="/redes-career-image.png"
-                alt="Estudiantes trabajando en redes"
+                src="/tecseg.png" // Cambiar por imagen adecuada
+                alt="Técnico evaluando riesgos laborales"
                 fill
                 className="object-cover object-center"
                 quality={100}
