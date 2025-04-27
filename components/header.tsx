@@ -126,20 +126,20 @@ export function Header({}: HeaderProps) {
       children: [
         {
           label: "Analista de Sistemas de Computación",
-          href: "/#sistemas",
-          sectionId: "sistemas",
+          href: "/#carreras",
+          sectionId: "carreras",
           description: "Desarrollo de software y sistemas de información",
         },
         {
           label: "Tec. Redes",
-          href: "/#redes",
-          sectionId: "redes",
+          href: "/#carreras",
+          sectionId: "carreras",
           description: "Infraestructura y comunicaciones",
         },
         {
           label: "Tec. Seguridad e Higiene",
-          href: "/#seguridad",
-          sectionId: "seguridad",
+          href: "/#carreras",
+          sectionId: "carreras",
           description: "Prevención de riesgos laborales",
         },
       ],
@@ -154,8 +154,8 @@ export function Header({}: HeaderProps) {
 
   return (
     <motion.header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-zinc-900/90 py-2 shadow-md backdrop-blur-sm dark:bg-zinc-900/90" : "bg-transparent py-4"
+    className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+      isScrolled ? "bg-zinc-900/90 py-2 shadow-md backdrop-blur-sm dark:bg-zinc-900/90" : "bg-transparent py-4"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}

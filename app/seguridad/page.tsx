@@ -4,13 +4,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { Header } from "@/components/header";
 import SocialBubble from "@/components/SocialBubble";
-import RedesInfoSection from "@/components/sections/redes/RedesInfoSection";
-import RedesRequisitosVision from "@/components/sections/redes/requisitos-vision";
-import RedesScheduleFragment from "@/components/sections/redes/RedesScheduleFragment";
+import SeguridadInfoSection from "@/components/sections/seguridad/SeguridadInfoSection";
+import SeguridadRequisitosVision from "@/components/sections/seguridad/requisitos-vision";
+import SeguridadScheduleFragment from "@/components/sections/seguridad/SeguridadScheduleFragment";
 import CorrelativasVisual from "@/components/CorrelativasVisual";
 import { Footer } from "@/components/footer";
 
-export default function RedesPage() {
+export default function SeguridadPage() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -26,7 +26,7 @@ export default function RedesPage() {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="bg-background text-foreground font-inter" // Aplicando estilos base
+      className="bg-background text-foreground font-inter"
     >
       {/* Sección Hero (imagen de fondo) */}
       <section
@@ -35,16 +35,16 @@ export default function RedesPage() {
         className="relative h-screen w-full overflow-hidden"
       >
         <motion.div 
-          className="absolute inset-0 z-0 glow-border" // Añadiendo glow-border
+          className="absolute inset-0 z-0 glow-border"
           style={{ y, scale }}
         >
           <Image
-            src="/pararede.png"
-            alt="ISIPP Building"
+            src="/seguridad_e_higiene_hero_section.jpeg" // Cambiar por imagen adecuada de higiene y seguridad
+            alt="Técnico en Higiene y Seguridad"
             fill
             priority
             quality={100}
-            className="object-cover object-[20%_30%] card-content-transition" // Añadiendo transición
+            className="object-cover object-[20%_30%] card-content-transition"
             sizes="100vw"
           />
           {/* Gradiente ajustado para transición suave */}
@@ -55,21 +55,21 @@ export default function RedesPage() {
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
           <Header />
           <SocialBubble />
-          <h1 className="text-5xl font-bold text-center font-playfair glow-text animate-pulse-intense"> {/* Aplicando estilos personalizados */}
-            Redes y Comunicación
+          <h1 className="text-5xl font-bold text-center font-playfair glow-text animate-pulse-intense">
+            Técnico en Higiene y Seguridad Laboral
           </h1>
         </div>
       </section>
 
-      {/* Secciones siguientes (pegadas sin espacio) */}
-      <RedesInfoSection className="section-gradient-1" /> {/* Aplicando gradiente */}
-      <RedesRequisitosVision className="section-gradient-2 dark:bg-card" /> {/* Estilos para modo oscuro */}
-      <RedesScheduleFragment className="bg-background dark:bg-popover" />
+      {/* Secciones siguientes */}
+      <SeguridadInfoSection className="section-gradient-1" />
+      <SeguridadRequisitosVision className="section-gradient-2 dark:bg-card" />
+      <SeguridadScheduleFragment className="bg-background dark:bg-popover" />
       <CorrelativasVisual 
-        carreraId="redes" 
+        carreraId="seguridad" 
         className="perspective-1000" 
-      /> {/* Efecto 3D */}
-      <Footer  /> {/* Usando variables de color */}
+      />
+      <Footer />
     </motion.div>
   );
 }

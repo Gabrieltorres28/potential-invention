@@ -2,15 +2,18 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+
+// Importaciones corregidas
 import { Header } from "@/components/header";
 import SocialBubble from "@/components/SocialBubble";
-import RedesInfoSection from "@/components/sections/redes/RedesInfoSection";
-import RedesRequisitosVision from "@/components/sections/redes/requisitos-vision";
-import RedesScheduleFragment from "@/components/sections/redes/RedesScheduleFragment";
+import AnalistaInfoSection from "@/components/sections/analista/AnalistaInfoSection";
+import AnalistaRequisitosVision from "@/components/sections/analista/requisito-vision-analista";
+import AnalistaScheduleFragment from "@/components/sections/analista/AnalistaScheduleFragment";
 import CorrelativasVisual from "@/components/CorrelativasVisual";
 import { Footer } from "@/components/footer";
 
-export default function RedesPage() {
+
+export default function AnalistaPage() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -26,50 +29,48 @@ export default function RedesPage() {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="bg-background text-foreground font-inter" // Aplicando estilos base
+      className="bg-background text-foreground font-inter"
     >
-      {/* Sección Hero (imagen de fondo) */}
+      {/* Sección Hero */}
       <section
         id="inicio"
         ref={heroRef}
         className="relative h-screen w-full overflow-hidden"
       >
-        <motion.div 
-          className="absolute inset-0 z-0 glow-border" // Añadiendo glow-border
+        <motion.div
+          className="absolute inset-0 z-0 glow-border"
           style={{ y, scale }}
         >
           <Image
-            src="/pararede.png"
-            alt="ISIPP Building"
+            src="/analista_hero_section.jpeg"
+            alt="Analista de Sistemas"
             fill
             priority
             quality={100}
-            className="object-cover object-[20%_30%] card-content-transition" // Añadiendo transición
+            className="object-cover object-[50%_30%] card-content-transition"
             sizes="100vw"
           />
-          {/* Gradiente ajustado para transición suave */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent" />
         </motion.div>
 
-        {/* Contenido sobre la imagen */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
           <Header />
           <SocialBubble />
-          <h1 className="text-5xl font-bold text-center font-playfair glow-text animate-pulse-intense"> {/* Aplicando estilos personalizados */}
-            Redes y Comunicación
+          <h1 className="text-5xl font-bold text-center font-playfair glow-text-tight animate-pulse-intense">
+            Analista en Sistemas y Computación
           </h1>
         </div>
       </section>
 
-      {/* Secciones siguientes (pegadas sin espacio) */}
-      <RedesInfoSection className="section-gradient-1" /> {/* Aplicando gradiente */}
-      <RedesRequisitosVision className="section-gradient-2 dark:bg-card" /> {/* Estilos para modo oscuro */}
-      <RedesScheduleFragment className="bg-background dark:bg-popover" />
+      {/* Secciones siguientes - Verifica que cada uno de estos componentes exista y se exporte correctamente */}
+      <AnalistaInfoSection className="section-gradient-1" />
+      <AnalistaRequisitosVision className="section-gradient-2 dark:bg-card" />
+      <AnalistaScheduleFragment className="bg-background dark:bg-popover" />
       <CorrelativasVisual 
-        carreraId="redes" 
+        carreraId="sistemas" 
         className="perspective-1000" 
-      /> {/* Efecto 3D */}
-      <Footer  /> {/* Usando variables de color */}
+      />
+      <Footer />
     </motion.div>
   );
 }

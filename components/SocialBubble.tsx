@@ -9,15 +9,11 @@ const icons = [
     bg: 'bg-pink-500 hover:bg-pink-600',
   },
   {
-    href: 'https://facebook.com',
+    href: 'https://web.facebook.com/people/Instituto-Superior-de-Inform%C3%A1tica/100094923631829/?_rdc=3&_rdr',
     icon: Facebook,
     bg: 'bg-blue-600 hover:bg-blue-700',
   },
-  {
-    href: 'https://linkedin.com',
-    icon: Linkedin,
-    bg: 'bg-blue-700 hover:bg-blue-800',
-  },
+ 
 ];
 
 const gap = 30;

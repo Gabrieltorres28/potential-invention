@@ -2,32 +2,36 @@
 import React from "react";
 import InfoCard from "@/components/InfoCardTemp";
 
+interface RedesExtraInfoSectionProps {
+  className?: string;
+}
 
-export default function RedesExtraInfoSection() {
+export default function RedesExtraInfoSection({ className }: RedesExtraInfoSectionProps) {
   return (
-    <section className="py-16 bg-white text-gray-800">
+    <section className={`py-16 bg-background text-foreground ${className || ""}`}>
       <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
 
         <InfoCard
           title="Requisitos"
           icon="📋"
           items={[
-            "✔ Educación Secundaria completa o en curso",
+            "✔ Educación Secundaria completa",
             "✔ Manejo básico de computadoras y conectividad a internet",
           ]}
+          className="bg-card text-card-foreground"
         />
 
         <InfoCard
           title="¿Cómo vas a cursar?"
           icon="📚"
           items={[
-            "📌 <strong>Modalidad presencial:</strong> prácticas en laboratorio",
-            "📌 <strong>Material didáctico:</strong> apuntes, guías y simulaciones",
-            "📌 <strong>Foros y consultas:</strong> interacción constante",
-            "📌 <strong>Acompañamiento docente:</strong> asesoramiento permanente",
+            "📌 <strong>Modalidad presencial</strong> ",
+            "📌 <strong>Material didáctico</strong> ",
+            "📌 <strong>Acompañamiento docente</strong> ",
           ]}
+          className="bg-card text-card-foreground"
         >
-          💻 Aprendé con apoyo constante y experiencias reales.
+          💻 Aprendé con apoyo constante.
         </InfoCard>
 
         <InfoCard
@@ -35,9 +39,9 @@ export default function RedesExtraInfoSection() {
           icon="🎯"
           items={[
             "📈 <strong>Alta demanda laboral:</strong> el sector tecnológico está en auge",
-            "✅ <strong>Competencia profesional:</strong> conocimientos aplicables",
-            "🕒 <strong>Flexibilidad:</strong> adaptado a tu rutina",
+            "✅ <strong>Competencia profesional:</strong> conocimientos aplicables"
           ]}
+          className="bg-card text-card-foreground"
         />
 
         <InfoCard
@@ -49,13 +53,15 @@ export default function RedesExtraInfoSection() {
             "📡 Soporte técnico y resolución de problemas",
             "🧰 Mantenimiento de infraestructura digital",
           ]}
+          className="bg-card text-card-foreground"
         />
 
         <InfoCard
           title="Ámbitos de Trabajo"
           icon="🏢"
+          className="bg-card text-card-foreground"
         >
-          <p className="text-lg text-gray-700">
+          <p className="text-lg text-muted-foreground">
             Podés desempeñarte en empresas de telecomunicaciones, áreas de IT, instituciones educativas,
             organismos públicos o como técnico independiente.
           </p>
