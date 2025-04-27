@@ -60,21 +60,30 @@ export function Header({}: HeaderProps) {
     }, 150)
   }
 
-  const handleNavClick = (e: React.MouseEvent, sectionId?: string, action?: () => void) => {
-    if (action) {
-      e.preventDefault()
-      action()
-      setActiveDropdown(null)
-      return
+  const handleNavClick = (e: React.MouseEvent, sectionId?: string, action?: () => void, href?: string) => {
+    // Cierra el dropdown
+    setActiveDropdown(null);
+  
+    if (href) {
+      // Si hay un href, se redirige (sin interferir con scrollToSection)
+      e.preventDefault();
+      router.push(href);  // Usando Next.js router para navegación
+      return;
     }
-
+  
+    // Si hay una sección, se hace scroll
     if (sectionId) {
-      e.preventDefault()
-      scrollToSection(sectionId)
-      setActiveDropdown(null)
+      e.preventDefault();
+      scrollToSection(sectionId);
+    }
+  
+    // Ejecuta acción si es que hay una
+    if (action) {
+      e.preventDefault();
+      action();
     }
   }
-
+  
   // Variantes de animación para los elementos del menú
   const menuItemVariants = {
     initial: { opacity: 0, y: -5, transition: { duration: 0.2 } },
@@ -118,31 +127,24 @@ export function Header({}: HeaderProps) {
 
   // Crear navItems con la opción de autoridades
   const navItems: NavItem[] = [
-    { label: "Inicio", href: "/#inicio", sectionId: "inicio" },
-    {
-      label: "Carreras",
-      href: "/#carreras",
-      sectionId: "carreras",
-      children: [
+    { label: "Inicio", href: "/", sectionId: "inicio" },
+    { label: "Carreras", href: "#", sectionId: "carreras", children: [
         {
           label: "Analista de Sistemas de Computación",
-          href: "/#carreras",
-          sectionId: "carreras",
+          href: "/sistemas",
           description: "Desarrollo de software y sistemas de información",
         },
         {
-          label: "Tec. Redes",
-          href: "/#carreras",
-          sectionId: "carreras",
+          label: "Tecnicatura en Redes",
+          href: "/redes",
           description: "Infraestructura y comunicaciones",
         },
         {
-          label: "Tec. Seguridad e Higiene",
-          href: "/#carreras",
-          sectionId: "carreras",
+          label: "Tecnicatura en Seguridad e Higiene",
+          href: "/seguridad",
           description: "Prevención de riesgos laborales",
-        },
-      ],
+        }
+      ]
     },
     {
       label: "Institucional",

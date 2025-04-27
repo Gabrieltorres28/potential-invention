@@ -9,7 +9,8 @@ interface AnalistaInfoSectionProps {
 export default function AnalistaInfoSection({ className }: AnalistaInfoSectionProps) {
   return (
     <section
-      id="carrera"
+      id="analista" 
+     
       className={`py-16 bg-primary dark:bg-primary-dark ${className || ""}`}
       style={{ marginTop: "-1px" }}
     >

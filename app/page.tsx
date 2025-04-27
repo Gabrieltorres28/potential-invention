@@ -120,84 +120,84 @@ export default function Home() {
       <motion.div key="main-content" initial={{ opacity: 1 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
         {/* Hero Section */}
         <section id="inicio" ref={heroRef} className="relative h-screen w-full overflow-hidden">
-          <motion.div className="absolute inset-0 z-0" style={{ y, scale }}>
-            <Image
-              src="/fondoisipp.png"
-              alt="ISIPP Building"
-              fill
-              className="object-cover object-center"
-              priority
-              quality={100}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70 mix-blend-multiply" />
-          </motion.div>
+  {/* Aquí se mantiene la animación del fondo */}
+  <motion.div className="absolute inset-0 z-0" style={{ y, scale }}>
+    <Image
+      src="/fondoisipp.png"
+      alt="ISIPP Building"
+      fill
+      className="object-cover object-center"
+      priority
+      quality={100}
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70 mix-blend-multiply" />
+  </motion.div>
 
-          <motion.div
-            className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center"
-            style={{ opacity }}
+  {/* La animación que solo aplica a las secciones visibles */}
+  <motion.div
+    className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center"
+    style={{ opacity }}
+  >
+    <motion.h1
+      className="font-playfair text-4xl font-bold tracking-tight text-white md:text-6xl glow-text"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      ISIPP 1206
+    </motion.h1>
+    <motion.p
+      className="mt-4 font-playfair text-xl text-white md:text-2xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      Tradición, Conocimiento y Futuro
+    </motion.p>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+      className="mt-8"
+    >
+      {/* Botón de acción */}
+      <div className="relative overflow-hidden rounded-md group animate-pulse-intense">
+        <div className="absolute inset-0 bg-primary/30 backdrop-blur-sm group-hover:bg-primary/40 transition-colors duration-300"></div>
+
+        <motion.div
+          className="absolute inset-0 w-[200%] h-full animate-shimmer-primary"
+          animate={{
+            x: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 2.5,
+            ease: "easeInOut",
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "loop",
+          }}
+        />
+
+        <div className="absolute inset-0 rounded-md glow-border"></div>
+
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="hover-vibrate"
+        >
+          <Button
+            className="relative bg-transparent hover:bg-transparent px-8 py-3 text-white border border-white/50 z-10 font-bold"
+            size="lg"
+            onClick={() => scrollToSection("carreras")}
           >
-            <motion.h1
-              className="font-playfair text-4xl font-bold tracking-tight text-white md:text-6xl glow-text"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              ISIPP 1206
-            </motion.h1>
-            <motion.p
-              className="mt-4 font-playfair text-xl text-white md:text-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Tradición, Conocimiento y Futuro
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8"
-            >
-              <div className="relative overflow-hidden rounded-md group animate-pulse-intense">
-                {/* Fondo animado con color primario */}
-                <div className="absolute inset-0 bg-primary/30 backdrop-blur-sm group-hover:bg-primary/40 transition-colors duration-300"></div>
+            <span className="relative z-10 text-white glow-text">Conocé nuestras carreras</span>
+          </Button>
+        </motion.div>
+      </div>
+    </motion.div>
+  </motion.div>
+</section>
 
-                {/* Efecto de luz que se mueve con color primario */}
-                <motion.div
-                  className="absolute inset-0 w-[200%] h-full animate-shimmer-primary"
-                  animate={{
-                    x: ["-100%", "100%"],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    ease: "easeInOut",
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "loop",
-                  }}
-                />
-
-                {/* Borde brillante */}
-                <div className="absolute inset-0 rounded-md glow-border"></div>
-
-                {/* Botón real */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="hover-vibrate"
-                >
-                  <Button
-                    className="relative bg-transparent hover:bg-transparent px-8 py-3 text-white border border-white/50 z-10 font-bold"
-                    size="lg"
-                    onClick={() => scrollToSection("carreras")}
-                  >
-                    <span className="relative z-10 text-white glow-text">Conocé nuestras carreras</span>
-                  </Button>
-                </motion.div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </section>
 
         <motion.section
           id="carreras"
