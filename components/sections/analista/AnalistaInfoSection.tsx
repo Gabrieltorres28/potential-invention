@@ -13,33 +13,35 @@ export default function AnalistaInfoSection({ className }: AnalistaInfoSectionPr
       className={`py-16 bg-primary dark:bg-primary-dark ${className || ""}`}
       style={{ marginTop: "-1px" }}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-12">
-          {/* Contenido principal */}
-          <div className="w-full md:w-1/2 text-primary-foreground dark:text-primary-dark-foreground text-center md:text-left mx-auto max-w-2xl">
-            <h2 className="text-4xl font-bold mb-6 text-accent dark:text-accent-foreground">
-              Información sobre la Carrera
-            </h2>
-            <p className="text-lg mb-8 leading-relaxed text-primary-foreground/90 dark:text-primary-dark-foreground/80">
-              La carrera de Analista en Sistemas te capacita para desarrollar soluciones 
-              software, analizar requerimientos y gestionar sistemas informáticos 
-              en diversos contextos organizacionales.
-            </p>
-            <ul className="space-y-4 text-lg text-primary-foreground dark:text-primary-dark-foreground/90">
-              <li className="flex items-center justify-center md:justify-start space-x-3">
-                <span className="text-accent dark:text-accent-foreground text-xl">🕒</span>
-                <span>Duración: 3 años</span>
-              </li>
-              <li className="flex items-center justify-center md:justify-start space-x-3">
-                <span className="text-accent dark:text-accent-foreground text-xl">📍</span>
-                <span>Modalidad: Presencial</span>
-              </li>
-              <li className="flex items-center justify-center md:justify-start space-x-3">
-                <span className="text-accent dark:text-accent-foreground text-xl">💻</span>
-                <span>Enfoque en desarrollo de software</span>
-              </li>
-            </ul>
-          </div>
+    <div className="container mx-auto px-4 md:px-6">
+  <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+    {/* Contenido principal */}
+    <div className="w-full md:w-1/2 text-gray-900 dark:text-gray-100 text-center md:text-left mx-auto max-w-2xl">
+      <h2 className="text-4xl font-bold mb-6 text-blue-600 dark:text-blue-400">
+        Información sobre la Carrera
+      </h2>
+      <p className="text-lg mb-8 leading-relaxed text-gray-800 dark:text-gray-300">
+        La carrera de Analista en Sistemas te capacita para desarrollar soluciones 
+        software, analizar requerimientos y gestionar sistemas informáticos 
+        en diversos contextos organizacionales.
+      </p>
+      <ul className="space-y-4 text-lg text-gray-800 dark:text-gray-300">
+        <li className="flex items-center justify-center md:justify-start space-x-3">
+          <span className="text-blue-600 dark:text-blue-400 text-xl">🕒</span>
+          <span>Duración: 3 años</span>
+        </li>
+        <li className="flex items-center justify-center md:justify-start space-x-3">
+          <span className="text-blue-600 dark:text-blue-400 text-xl">📍</span>
+          <span>Modalidad: Presencial</span>
+        </li>
+        <li className="flex items-center justify-center md:justify-start space-x-3">
+          <span className="text-blue-600 dark:text-blue-400 text-xl">💻</span>
+          <span>Enfoque en desarrollo de software</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
           {/* Contenedor de imagen cuadrada */}
           <div className="w-full md:w-1/2 flex justify-center">
